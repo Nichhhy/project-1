@@ -1,15 +1,72 @@
 import React from "react";
 import Schedule from "./Schedule";
 import Clock from "./Clock";
-
+import OutStanding from "./OutStanding";
 export default class StartSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       schedules: [
-        { date: "Thu Feb 15 2023", tasks: [], idTracker: 0 },
-        { date: "Thu Feb 14 2023", tasks: [], idTracker: 0 },
-        { date: "Thu Feb 13 2023", tasks: [], idTracker: 0 },
+        {
+          date: "Thu Feb 15 2023",
+          tasks: [
+            {
+              taskId: 1,
+              taskName: "Do shit",
+              startTime: 2,
+              endTime: 4,
+              status: "To Do",
+            },
+            {
+              taskId: 2,
+              taskName: "Do shit",
+              startTime: 3,
+              endTime: 4,
+              status: "To Do",
+            },
+          ],
+          idTracker: 0,
+        },
+        {
+          date: "Thu Feb 14 2023",
+          tasks: [
+            {
+              taskId: 1,
+              taskName: "Do shit",
+              startTime: 2,
+              endTime: 4,
+              status: "To Do",
+            },
+            {
+              taskId: 2,
+              taskName: "Do shit",
+              startTime: 3,
+              endTime: 4,
+              status: "To Do",
+            },
+          ],
+          idTracker: 0,
+        },
+        {
+          date: "Thu Feb 13 2023",
+          tasks: [
+            {
+              taskId: 1,
+              taskName: "Do shit",
+              startTime: 2,
+              endTime: 4,
+              status: "To Do",
+            },
+            {
+              taskId: 2,
+              taskName: "Do shit",
+              startTime: 3,
+              endTime: 4,
+              status: "To Do",
+            },
+          ],
+          idTracker: 0,
+        },
       ],
       todaySchedule: false,
     };
@@ -96,20 +153,23 @@ export default class StartSection extends React.Component {
           </div>
         ) : (
           <div>
-            {this.state.schedules.map(
-              (schedules) =>
-                schedules.date === currentDate ? (
-                  <Schedule
-                    key={schedules.date}
-                    {...schedules}
-                    updateTask={this.updateTask}
-                  />
-                ) : null
-              /* <Schedule
-                key={schedules.date}
-                {...schedules}
-                updateTask={this.updateTask}
-              /> */
+            {this.state.schedules.map((schedules) =>
+              schedules.date === currentDate ? (
+                <Schedule
+                  key={schedules.date}
+                  {...schedules}
+                  updateTask={this.updateTask}
+                />
+              ) : null
+            )}
+            {this.state.schedules.map((schedules) =>
+              schedules.date !== currentDate ? (
+                <OutStanding
+                  key={schedules.date}
+                  {...schedules}
+                  updateTask={this.updateTask}
+                />
+              ) : null
             )}
           </div>
         )}
