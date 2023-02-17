@@ -48,7 +48,7 @@ export default class OutStanding extends React.Component {
 
   render() {
     return (
-      <div className=" w-full">
+      <div className=" w-full min-h-[30%]">
         <div> this is OutStanding</div>
         <div>{this.state.date}</div>
         <table className="w-full">

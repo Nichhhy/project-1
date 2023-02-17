@@ -165,7 +165,7 @@ export default class AddTask extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <table>
+        <table className="w-full">
           <tbody>
             <tr>
               <td>

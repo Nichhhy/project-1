@@ -65,76 +65,70 @@ export default class Schedule extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <div> this is schedule</div>
-          <div>{this.state.date}</div>
+      <div className="w-full h-full place-content-center flex flex-col">
+        <div> this is schedule</div>
+        <div className="text-5xl">{this.state.date}</div>
 
-          <table className="w-full">
-            {this.props.status === "Things to do" ? (
-              <tbody>
-                {this.props.tasks
-                  .sort((a, b) => a.startTime.value - b.startTime.value)
-                  .map((tasks) =>
-                    tasks.status === "To Do" ? (
-                      <tr key={tasks.taskId}>
-                        <td>
-                          <button onClick={() => this.deleteTask(tasks.taskId)}>
-                            DELETE
-                          </button>
-                        </td>
-                        <td>{tasks.taskName}</td>
-                        <td>{tasks.startTime.label}</td>
-                        <td>{tasks.endTime.label}</td>
-                        <td>{tasks.status}</td>
-                        <td>
-                          <button
-                            onClick={() => this.completeTask(tasks.taskId)}
-                          >
-                            COMPLETE
-                          </button>
-                        </td>
-                      </tr>
-                    ) : null
-                  )}
-              </tbody>
-            ) : (
-              <tbody>
-                {this.props.tasks
-                  .sort((a, b) => a.startTime.value - b.startTime.value)
-                  .map((tasks) => (
+        <table className="w-full">
+          {this.props.status === "Things to do" ? (
+            <tbody>
+              {this.props.tasks
+                .sort((a, b) => a.startTime.value - b.startTime.value)
+                .map((tasks) =>
+                  tasks.status === "To Do" ? (
                     <tr key={tasks.taskId}>
                       <td>
-                        {tasks.status === "Complete" ||
-                        tasks.status === "Cancelled" ? null : (
-                          <button onClick={() => this.deleteTask(tasks.taskId)}>
-                            DELETE
-                          </button>
-                        )}
+                        <button onClick={() => this.deleteTask(tasks.taskId)}>
+                          DELETE
+                        </button>
                       </td>
                       <td>{tasks.taskName}</td>
                       <td>{tasks.startTime.label}</td>
                       <td>{tasks.endTime.label}</td>
                       <td>{tasks.status}</td>
                       <td>
-                        {tasks.status === "Complete" ||
-                        tasks.status === "Cancelled" ? null : (
-                          <button
-                            onClick={() => this.completeTask(tasks.taskId)}
-                          >
-                            COMPLETE
-                          </button>
-                        )}
+                        <button onClick={() => this.completeTask(tasks.taskId)}>
+                          COMPLETE
+                        </button>
                       </td>
                     </tr>
-                  ))}
-              </tbody>
-            )}
-          </table>
-          {this.props.status === "Things to do" ? (
-            <AddTask addTask={this.addTask} idTracker={this.state.idTracker} />
-          ) : null}
-        </div>
+                  ) : null
+                )}
+            </tbody>
+          ) : (
+            <tbody>
+              {this.props.tasks
+                .sort((a, b) => a.startTime.value - b.startTime.value)
+                .map((tasks) => (
+                  <tr key={tasks.taskId}>
+                    <td>
+                      {tasks.status === "Complete" ||
+                      tasks.status === "Cancelled" ? null : (
+                        <button onClick={() => this.deleteTask(tasks.taskId)}>
+                          DELETE
+                        </button>
+                      )}
+                    </td>
+                    <td>{tasks.taskName}</td>
+                    <td>{tasks.startTime.label}</td>
+                    <td>{tasks.endTime.label}</td>
+                    <td>{tasks.status}</td>
+                    <td>
+                      {tasks.status === "Complete" ||
+                      tasks.status === "Cancelled" ? null : (
+                        <button onClick={() => this.completeTask(tasks.taskId)}>
+                          COMPLETE
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          )}
+        </table>
+        {this.props.status === "Things to do" ? (
+          <AddTask addTask={this.addTask} idTracker={this.state.idTracker} />
+        ) : null}
       </div>
     );
   }

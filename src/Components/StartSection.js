@@ -191,7 +191,7 @@ export default class StartSection extends React.Component {
       month: "short",
     });
     const statusThingsToDo = (
-      <div>
+      <div className="w-full h-full">
         {this.state.schedules.map((schedules) =>
           schedules.date === currentDate ? (
             <Schedule
@@ -213,7 +213,7 @@ export default class StartSection extends React.Component {
     );
 
     const statusSchedule = (
-      <div>
+      <div className="w-full h-full">
         {this.state.schedules.map((schedules) =>
           schedules.date === currentDate ? (
             <Schedule
@@ -228,7 +228,7 @@ export default class StartSection extends React.Component {
     );
 
     const statusOutstanding = (
-      <div>
+      <div className="w-full h-full">
         {this.state.schedules.map((schedules) =>
           schedules.date !== currentDate ? (
             schedules.tasks.filter((task) => task.status === "To Do").length !==
@@ -284,10 +284,8 @@ export default class StartSection extends React.Component {
       <div className="App">
         <HeaderSection updatePage={this.updatePage} />
 
-        <div className=" flex items-center justify-center w-full">
-          <div className="w-full h-4/6 flex items-center justify-center flex-col p-5 text-white">
-            {display}
-          </div>
+        <div className="w-5/6 h-4/6 flex items-center justify-center flex-col px-12 py-5 text-black bg-[#D9D9D9] rounded-lg mt-16">
+          {display}
         </div>
         <FooterSection />
       </div>
