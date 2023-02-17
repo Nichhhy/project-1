@@ -5,6 +5,10 @@ export default class HeaderSection extends React.Component {
     super(props);
   }
 
+  handleClick = (status) => {
+    this.props.updatePage(status);
+  };
+
   render() {
     return (
       <header className="w-full bg-grey m-0 flex justify-center fixed top-0">
@@ -12,11 +16,36 @@ export default class HeaderSection extends React.Component {
           className="w-10/12 flex justify-center
         "
         >
-          <div className="headerDiv text-xl">Schedule</div>
-          <div className="headerDiv text-xl">Things to do</div>
-          <div className="headerLogo ">GET TO WORK</div>
-          <div className="headerDiv text-xl">Outstanding</div>
-          <div className="headerDiv text-xl">Clear all</div>
+          <button
+            className="headerDiv text-xl"
+            onClick={() => this.handleClick("Schedule")}
+          >
+            Schedule
+          </button>
+          <button
+            className="headerDiv text-xl"
+            onClick={() => this.handleClick("Things to do")}
+          >
+            Things to do
+          </button>
+          <button
+            className="headerLogo "
+            onClick={() => this.handleClick("Things to do")}
+          >
+            GET TO WORK
+          </button>
+          <button
+            className="headerDiv text-xl"
+            onClick={() => this.handleClick("Outstanding")}
+          >
+            Outstanding
+          </button>
+          <button
+            className="headerDiv text-xl"
+            onClick={() => this.handleClick("Clear all")}
+          >
+            Clear all
+          </button>
         </div>
       </header>
     );

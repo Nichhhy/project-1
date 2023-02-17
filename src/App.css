@@ -6,6 +6,9 @@
   justify-content: center;
 }
 
+select {
+  color: black;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -106,16 +106,22 @@ export default class AddTask extends React.Component {
     this.state = {
       taskId: "",
       taskName: "",
-      startTime: "",
-      endTime: "",
+      startTime: {
+        label: "12 am",
+        value: 0,
+      },
+      endTime: {
+        label: "12 am",
+        value: 0,
+      },
       status: "",
     };
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-
-    if (this.state.endTime <= this.state.startTime) {
+    console.log(this.state);
+    if (this.state.endTime.value <= this.state.startTime.value) {
       alert("Please enter proper end Time");
     } else {
       this.setState(
@@ -133,11 +139,12 @@ export default class AddTask extends React.Component {
     this.setState({
       taskId: "",
       taskName: "",
-      startTime: "",
-      endTime: "",
+      startTime: 0,
+      endTime: 0,
       status: "",
     });
   };
+
   handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -146,6 +153,15 @@ export default class AddTask extends React.Component {
     });
   };
 
+  handleChangeSelect = (e) => {
+    const { name, value } = e.target;
+
+    const timeValue = time.find((time) => time.value === parseInt(value));
+
+    this.setState({
+      [name]: timeValue,
+    });
+  };
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -158,13 +174,14 @@ export default class AddTask extends React.Component {
                   type="text"
                   value={this.state.taskName}
                   onChange={this.handleChange}
+                  required
                 ></input>
               </td>
               <td>
                 <select
                   name="startTime"
-                  value={this.state.startTime}
-                  onChange={this.handleChange}
+                  value={this.state.startTime.value}
+                  onChange={this.handleChangeSelect}
                 >
                   {time.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -176,8 +193,8 @@ export default class AddTask extends React.Component {
               <td>
                 <select
                   name="endTime"
-                  value={this.state.endTime}
-                  onChange={this.handleChange}
+                  value={this.state.endTime.value}
+                  onChange={this.handleChangeSelect}
                 >
                   {time.map((option) => (
                     <option key={option.value} value={option.value}>
