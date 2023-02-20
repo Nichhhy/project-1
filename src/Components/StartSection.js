@@ -270,10 +270,19 @@ export default class StartSection extends React.Component {
 
           default:
             display = (
-              <div>
-                <div className="fira text-left w-full text-xl">Today is : </div>
+              <div className="w-[500px] mx-auto my-[50px] p-[50px] place-content-center flex flex-col ">
+                <div className="fira text-left w-full text-xl text-white">
+                  Today is :
+                </div>
                 <Clock />
-                <button onClick={this.createNewDay}> Start the day</button>
+                <div className="my-[30px]">
+                  <button
+                    className="rounded-full px-[10px] py-[5px] bg-white"
+                    onClick={this.createNewDay}
+                  >
+                    Start the day
+                  </button>
+                </div>
               </div>
             );
             break;
@@ -283,10 +292,8 @@ export default class StartSection extends React.Component {
     return (
       <div className="App">
         <HeaderSection updatePage={this.updatePage} />
+        <div className="relative  justify-center  mx-0 ">{display}</div>
 
-        <div className="w-5/6 h-4/6 flex items-center justify-center flex-col px-12 py-5 text-black bg-[#D9D9D9] rounded-lg mt-16">
-          {display}
-        </div>
         <FooterSection />
       </div>
     );

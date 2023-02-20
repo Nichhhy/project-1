@@ -48,33 +48,35 @@ export default class OutStanding extends React.Component {
 
   render() {
     return (
-      <div className=" w-full min-h-[30%]">
-        <div> this is OutStanding</div>
-        <div>{this.state.date}</div>
-        <table className="w-full">
-          <tbody>
-            {this.props.tasks.map((tasks) =>
-              tasks.status === "To Do" ? (
-                <tr key={tasks.taskId}>
-                  <td>
-                    <button onClick={() => this.deleteTask(tasks.taskId)}>
-                      DELETE
-                    </button>
-                  </td>
-                  <td>{tasks.taskName}</td>
-                  <td>{tasks.startTime.label}</td>
-                  <td>{tasks.endTime.label}</td>
-                  <td>{tasks.status}</td>
-                  <td>
-                    <button onClick={() => this.completeTask(tasks.taskId)}>
-                      COMPLETE
-                    </button>
-                  </td>
-                </tr>
-              ) : null
-            )}
-          </tbody>
-        </table>
+      <div>
+        <p className="text-4xl pt-[30px] text-white">{this.state.date}</p>
+        <div className="w-[90%] mx-auto  my-[30px]  p-[50px] place-content-center flex flex-col bg-[#D9D9D9] rounded-lg">
+          <p className="text-5xl pb-[30px] text-black">OUTSTANDING</p>
+          <table className="w-full my-[20px]">
+            <tbody>
+              {this.props.tasks.map((tasks) =>
+                tasks.status === "To Do" ? (
+                  <tr key={tasks.taskId}>
+                    <td className="w-[5%]">
+                      <button onClick={() => this.deleteTask(tasks.taskId)}>
+                        X
+                      </button>
+                    </td>
+                    <td className="tdStyle">{tasks.taskName}</td>
+                    <td className="tdStyle">{tasks.startTime.label}</td>
+                    <td className="tdStyle">{tasks.endTime.label}</td>
+                    <td className="tdStyle">{tasks.status}</td>
+                    <td className="w-[5%]">
+                      <button onClick={() => this.completeTask(tasks.taskId)}>
+                        &#10004;
+                      </button>
+                    </td>
+                  </tr>
+                ) : null
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

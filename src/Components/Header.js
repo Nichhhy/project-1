@@ -11,9 +11,9 @@ export default class HeaderSection extends React.Component {
 
   render() {
     return (
-      <header className="w-full bg-grey m-0 flex justify-center fixed top-0">
+      <header className="w-full h-[10%] bg-grey m-0 flex justify-center sticky top-0 z-50">
         <div
-          className="w-10/12 flex justify-center
+          className="w-full max-w-[1400px] flex justify-center
         "
         >
           <button

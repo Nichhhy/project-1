@@ -139,8 +139,14 @@ export default class AddTask extends React.Component {
     this.setState({
       taskId: "",
       taskName: "",
-      startTime: 0,
-      endTime: 0,
+      startTime: {
+        label: "12 am",
+        value: 0,
+      },
+      endTime: {
+        label: "12 am",
+        value: 0,
+      },
       status: "",
     });
   };
@@ -165,20 +171,25 @@ export default class AddTask extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <table className="w-full">
+        <p className="text-2xl my-[20px]">Add tasks</p>
+        <table className="w-full ">
           <tbody>
             <tr>
-              <td>
+              <td className="w-[5%]"></td>
+              <td className="tdStyle">
                 <input
+                  className="bg-transparent w-full"
                   name="taskName"
                   type="text"
+                  placeholder="Enter new task..."
                   value={this.state.taskName}
                   onChange={this.handleChange}
                   required
                 ></input>
               </td>
-              <td>
+              <td className="tdStyle">
                 <select
+                  className="bg-transparent w-full"
                   name="startTime"
                   value={this.state.startTime.value}
                   onChange={this.handleChangeSelect}
@@ -190,8 +201,9 @@ export default class AddTask extends React.Component {
                   ))}
                 </select>
               </td>
-              <td>
+              <td className="tdStyle">
                 <select
+                  className="bg-transparent w-full"
                   name="endTime"
                   value={this.state.endTime.value}
                   onChange={this.handleChangeSelect}
@@ -203,11 +215,22 @@ export default class AddTask extends React.Component {
                   ))}
                 </select>
               </td>
-              <td>
-                <input name="status" type="text" value="To Do" disabled></input>
+              <td className="tdStyle">
+                <input
+                  className="bg-transparent w-full"
+                  name="status"
+                  type="text"
+                  value="To Do"
+                  disabled
+                ></input>
               </td>
-              <td>
-                <input name="submit" type="submit" value="submit"></input>
+              <td className="w-[5%]">
+                <input
+                  className="cursor-pointer"
+                  name="submit"
+                  type="submit"
+                  value="add"
+                ></input>
               </td>
             </tr>
           </tbody>

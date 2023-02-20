@@ -7,9 +7,9 @@ export default class FooterSection extends React.Component {
 
   render() {
     return (
-      <footer className="w-full bg-grey h-1/10 m-0 flex justify-center fixed bottom-0">
+      <footer className="w-full bg-grey h-[10%] m-0  justify-center sticky bottom-0">
         <div
-          className="w-10/12 flex justify-center
+          className=" flex justify-center
         "
         >
           <div className="headerLogo ">GET TO WORK</div>

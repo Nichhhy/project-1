@@ -18,7 +18,7 @@ export default class Clock extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="text-white">
         <div className="text-5xl py-8">
           {this.state.date.toDateString("en-us", {
             year: "numeric",
