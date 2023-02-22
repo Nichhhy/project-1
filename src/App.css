@@ -2,7 +2,6 @@
   text-align: center;
   display: flex;
   width: 100%;
-
   justify-content: space-between;
   flex-direction: column;
   margin-top: 0;
@@ -37,11 +36,15 @@ select {
 }
 
 .headerDiv {
-  @apply w-1/6 items-center justify-center h-20  flex;
+  @apply w-1/6 items-center justify-center h-20  flex max-[768px]:hidden;
+}
+
+.headerDivMobile {
+  @apply w-1/6 items-center justify-center py-[20px]  flex md:hidden;
 }
 
 .headerLogo {
-  @apply w-1/4 items-center justify-center h-20  flex text-3xl font-bold;
+  @apply w-2/6 items-center justify-center h-20  flex text-3xl font-bold;
 }
 
 #root {

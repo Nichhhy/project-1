@@ -112,6 +112,14 @@ export default class StartSection extends React.Component {
     };
   }
 
+  reset = () => {
+    this.setState({
+      schedules: [],
+      todaySchedule: false,
+      status: "Things to do",
+    });
+  };
+
   createNewDay = () => {
     let newDateId = new Date().toDateString("en-us", {
       year: "numeric",
@@ -155,12 +163,19 @@ export default class StartSection extends React.Component {
   };
 
   updatePage = (s) => {
-    this.setState(
-      {
-        status: s,
-      },
-      () => this.storeLocally()
-    );
+    s !== "clear"
+      ? this.setState(
+          {
+            status: s,
+          },
+          () => this.storeLocally()
+        )
+      : this.setState(
+          {
+            status: "Things to do",
+          },
+          () => this.reset()
+        );
   };
   storeLocally = () => {
     // you can only store json strings inside local storage - this function creates json strings
@@ -227,6 +242,15 @@ export default class StartSection extends React.Component {
       </div>
     );
 
+    const anyOutstanding = this.state.schedules.filter((schedules) =>
+      schedules.date !== currentDate ? (
+        schedules.tasks.filter((task) => task.status === "To Do").length !==
+        0 ? (
+          <div className="text-white">no Outstanding</div>
+        ) : null
+      ) : null
+    );
+
     const statusOutstanding = (
       <div className="w-full h-full">
         {this.state.schedules.map((schedules) =>
@@ -241,6 +265,9 @@ export default class StartSection extends React.Component {
             ) : null
           ) : null
         )}
+        {anyOutstanding.length === 0 ? (
+          <div className="text-white"> No OutStanding</div>
+        ) : null}
       </div>
     );
     let display = "";
@@ -263,30 +290,31 @@ export default class StartSection extends React.Component {
 
         break;
 
-      default:
-        switch (this.state.status) {
+      /*       default: */
+      /*     switch (this.state.status) {
           case "Outstanding":
-            break;
+            display = statusOutstanding;
+            break; */
 
-          default:
-            display = (
-              <div className="w-[500px] mx-auto my-[50px] p-[50px] place-content-center flex flex-col ">
-                <div className="fira text-left w-full text-xl text-white">
-                  Today is :
-                </div>
-                <Clock />
-                <div className="my-[30px]">
-                  <button
-                    className="rounded-full px-[10px] py-[5px] bg-white"
-                    onClick={this.createNewDay}
-                  >
-                    Start the day
-                  </button>
-                </div>
-              </div>
-            );
-            break;
-        }
+      default:
+        display = (
+          <div className="w-[500px] mx-auto my-[50px] p-[50px] place-content-center flex flex-col ">
+            <div className="fira text-left w-full text-xl text-white">
+              Today is :
+            </div>
+            <Clock />
+            <div className="my-[30px]">
+              <button
+                className="rounded-full px-[10px] py-[5px] bg-white"
+                onClick={this.createNewDay}
+              >
+                Start the day
+              </button>
+            </div>
+          </div>
+        );
+        break;
+      /*     } */
     }
 
     return (
