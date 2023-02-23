@@ -16,7 +16,7 @@ export default class HeaderSection extends React.Component {
   render() {
     return (
       <header className="w-full bg-grey m-0 flex flex-col justify-center sticky top-0 z-50">
-        <div className="w-full">
+        <div className="w-full  flex justify-center">
           <div
             className="w-full max-w-[1400px] flex justify-center
         "

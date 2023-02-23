@@ -290,12 +290,6 @@ export default class StartSection extends React.Component {
 
         break;
 
-      /*       default: */
-      /*     switch (this.state.status) {
-          case "Outstanding":
-            display = statusOutstanding;
-            break; */
-
       default:
         display = (
           <div className="w-[500px] mx-auto my-[50px] p-[50px] place-content-center flex flex-col ">
@@ -314,7 +308,6 @@ export default class StartSection extends React.Component {
           </div>
         );
         break;
-      /*     } */
     }
 
     return (
